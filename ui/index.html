@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ui</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+
+  <style>
+    /* Ensure the main container fills the screen */
+    main {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+    }
+
+    .audio-gate {
+      position: absolute;
+      inset: 0;
+      /* Cover everything */
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      /* Higher than HUD and Canvas */
+    }
+
+    .modal {
+      background: #222;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+      border: 1px solid #444;
+    }
+
+    button {
+      background: #0088ff;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: #0077ee;
+    }
+  </style>
+</body>
+
+</html>
