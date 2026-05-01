@@ -8,13 +8,11 @@
   import Search from "./components/Search.svelte";
   import { guestList, type Guest } from "./lib/presenceStore";
 
-  // State Variables (Svelte 5 uses $state for reactivity)
   let gameCanvas: HTMLCanvasElement;
   let status = $state("Connecting...");
   let currentZone = $state("dancefloor");
   let audioStarted = $state(false);
 
-  // Audio Globals
   let audioCtx: AudioContext;
   let biquadFilter: BiquadFilterNode;
   let oscillator: OscillatorNode;
@@ -24,17 +22,13 @@
   function setupAudio() {
     audioCtx = new (window.AudioContext || window.AudioContext)();
 
-    // 1. Create the HTML5 Audio element
     audioTag = new Audio();
 
-    // 2. CRITICAL: This allows the Web Audio API to "touch" the data
     audioTag.crossOrigin = "anonymous";
 
-    // 3. Use a direct MP3 link (Replace this with any live .mp3 URL)
     audioTag.src = "/song.mp3";
     audioTag.loop = true;
 
-    // 4. Connect the Tag to the Web Audio Pipeline
     const source = audioCtx.createMediaElementSource(audioTag);
 
     biquadFilter = audioCtx.createBiquadFilter();
@@ -98,11 +92,10 @@
 <style>
   :global(body) {
     margin: 0;
-    overflow: hidden; /* Prevent scrollbars for the game */
+    overflow: hidden;
     background: #000;
   }
 
-  /* Ensure the root and main fill the viewport */
   :global(#app) {
     width: 100vw;
     height: 100vh;
@@ -122,7 +115,7 @@
     z-index: 10;
     background: rgba(0, 0, 0, 0.5);
     padding: 10px;
-    pointer-events: none; /* Let clicks pass through to the game */
+    pointer-events: none;
   }
 
   canvas {

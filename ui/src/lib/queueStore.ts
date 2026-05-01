@@ -5,7 +5,6 @@ export const userQueue = writable([]);
 
 export const addToQueue = (track) => {
   userQueue.update(items => {
-    // Prevent duplicates if you want
     if (items.find(t => t.id === track.id)) return items;
     return [...items, track];
   });

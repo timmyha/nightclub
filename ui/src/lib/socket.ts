@@ -19,7 +19,6 @@ function createSocketStore() {
   let presenceCallback: ((list: any[]) => void) | null = null;
 
   function connect(onPresenceSync: (list: any[]) => void) {
-    // prevent multiple sockets from being created
     if (socket) return;
 
     presenceCallback = onPresenceSync;
@@ -29,7 +28,6 @@ function createSocketStore() {
 
     socket.connect();
 
-    // do not create/join channel here; handled in joinLobby
     update((s) => ({
       ...s,
     }));
@@ -39,7 +37,6 @@ function createSocketStore() {
     return new Promise((resolve, reject) => {
       if (!socket) return reject(new Error("Socket not connected"));
 
-      // ensure we don't join multiple times
       let existingChannel: Channel | null = null;
       update((s) => {
         existingChannel = s.channel;

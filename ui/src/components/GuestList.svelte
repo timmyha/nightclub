@@ -27,7 +27,7 @@
     border: 1px solid #444;
     font-family: sans-serif;
     min-width: 150px;
-    pointer-events: none; /* Let clicks pass through to the game */
+    pointer-events: none;
     z-index: 999999;
   }
 
